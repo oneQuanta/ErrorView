@@ -2,13 +2,13 @@
 错误的界面，成功界面，空界面
 
 
-##什么都不说，先亮效果图。
+##	什么都不说，先亮效果图
 <img src="image/succeed.png" width="320" height="480">
 <img src="image/error.png" width="320" height="480">
 <img src="image/empty.png" width="320" height="480">
 <img src="image/loading.png" width="320" height="480">
 
-##使用方式
+##	使用方式
 
 * 添加依赖
 * 复制[VaryViewUtil](https://github.com/oneQuanta/ErrorView/blob/master/app/src/main/java/com/pomelo/errorview/VaryViewUtil.java)到项目中
