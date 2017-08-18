@@ -10,8 +10,11 @@ import android.widget.Toast;
 import com.plmelo.varyview.VaryViewHelper;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, VaryViewUtil.VaryView {
+
     private Button btEmpty, btSucceed, btError, btLoading;
     private LinearLayout varyView;
+
+    //varyViewHelper对象
     private VaryViewHelper varyViewHelper;
 
     @Override
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btError.setOnClickListener(this);
         btLoading.setOnClickListener(this);
 
+        //创建varyViewHelper对象
         varyViewHelper = VaryViewUtil.newInstance(this, this);
     }
 
@@ -38,15 +42,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bt_empty:
+                //显示空的界面
                 varyViewHelper.showEmptyView();
                 break;
             case R.id.bt_succeed:
+                //显示成功的界面
                 varyViewHelper.showDataView();
                 break;
             case R.id.bt_error:
+                //显示错误的界面
                 varyViewHelper.showErrorView();
                 break;
             case R.id.bt_loading:
+                //显示加载的界面
                 varyViewHelper.showLoadingView();
                 break;
         }
@@ -60,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
-     * @return 要各种网络状态界面的View
+     * @return 网络状态变化的View
      */
     @Override
     public View getVaryView() {
