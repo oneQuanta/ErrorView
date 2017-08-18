@@ -36,7 +36,7 @@ public class VaryViewUtil {
                 .setDataView(varyView.getVaryView())//放数据的父布局，逻辑处理在该Activity中处理
                 .setLoadingView(LayoutInflater.from(context).inflate(R.layout.layout_loadingview, null))//加载页，无实际逻辑处理
                 .setEmptyView(LayoutInflater.from(context).inflate(R.layout.layout_emptyview, null))//空页面，无实际逻辑处理
-                .setErrorView(LayoutInflater.from(context).inflate(R.layout.layout_errorview, null))//错误页面
+                .setErrorView(LayoutInflater.from(context).inflate(R.layout.layout_errorview, null))//错误页面，无实际逻辑处理
                 .setRefreshListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
