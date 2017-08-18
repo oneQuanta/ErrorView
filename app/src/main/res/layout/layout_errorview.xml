@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@android:color/white"
+              android:gravity="center"
+              android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/page_iv"
+        android:layout_width="300px"
+        android:layout_height="300px"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/error" />
+    <TextView
+        android:layout_marginBottom="50px"
+        android:text="暂无网络，请连接Wifi或开启数据"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:background="@drawable/button_error_view"
+        android:textColor="#05af05"
+        android:id="@+id/vv_error_refresh"
+        android:layout_width="600px"
+        android:layout_height="wrap_content"
+        android:text="重试"/>
+
+</LinearLayout>

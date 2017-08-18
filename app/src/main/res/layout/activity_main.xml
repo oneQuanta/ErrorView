@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.pomelo.errorview.MainActivity">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,13 +26,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="empty" />
+
+        <Button
+            android:id="@+id/bt_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="loading" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll_vary"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="horizontal">
+
+        <TextView
+            android:textSize="40sp"
+            android:textColor="#05af05"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="网络数据" />
 
     </LinearLayout>
 
