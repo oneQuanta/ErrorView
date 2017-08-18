@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     @Override
     public View getVaryView() {
+        //要替换的界面
         return varyView;
     }
 
