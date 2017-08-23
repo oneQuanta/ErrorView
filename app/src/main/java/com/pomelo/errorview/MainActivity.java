@@ -1,21 +1,15 @@
 package com.pomelo.errorview;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.plmelo.varyview.VaryViewHelper;
-
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, VaryViewUtil.VaryView {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private Button btEmpty, btSucceed, btError, btLoading;
     private LinearLayout varyView;
-
-    //varyViewHelper对象
-    private VaryViewHelper varyViewHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,12 +54,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        //释放资源
-        varyViewHelper.releaseVaryView();
-    }
 
     /**
      * @return 网络状态变化的View
