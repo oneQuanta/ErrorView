@@ -1,6 +1,5 @@
 package com.pomelo.errorview;
 
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -11,11 +10,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private Button btEmpty, btSucceed, btError, btLoading;
     private LinearLayout varyView;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void initView() {
+        setContentView(R.layout.activity_main);
         btEmpty = (Button) findViewById(R.id.bt_empty);
         btSucceed = (Button) findViewById(R.id.bt_succeed);
         btError = (Button) findViewById(R.id.bt_error);
@@ -26,9 +29,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         btSucceed.setOnClickListener(this);
         btError.setOnClickListener(this);
         btLoading.setOnClickListener(this);
-
-        //创建varyViewHelper对象
-        varyViewHelper = VaryViewUtil.newInstance(this, this);
     }
 
 

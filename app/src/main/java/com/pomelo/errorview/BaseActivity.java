@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.plmelo.varyview.VaryViewHelper;
+import com.plmelo.varyview.VaryViewUtil;
 
 /**
  * Created by Administrator on 2017/8/23.
@@ -17,7 +18,15 @@ public abstract class BaseActivity extends AppCompatActivity implements VaryView
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initView();
+        //创建varyViewHelper对象
+        varyViewHelper = VaryViewUtil.newInstance(this, this);
+        initData();
     }
+
+    protected abstract void initData();
+
+    protected abstract void initView();
 
     @Override
     public abstract View getVaryView();
