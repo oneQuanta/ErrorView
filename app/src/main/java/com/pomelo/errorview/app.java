@@ -7,7 +7,7 @@ import com.pomelo.varyview.VaryViewUtil;
 
 
 /**
- * Created by Administrator on 2017/8/28.
+ * Created by pomelo on 2017/8/28.
  */
 
 public class app extends Application {
