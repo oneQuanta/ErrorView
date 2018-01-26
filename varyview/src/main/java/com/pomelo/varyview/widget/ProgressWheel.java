@@ -1,4 +1,4 @@
-package com.plmelo.varyview.widget;
+package com.pomelo.varyview.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;

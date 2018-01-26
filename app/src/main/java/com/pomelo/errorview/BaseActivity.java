@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.plmelo.varyview.VaryViewHelper;
-import com.plmelo.varyview.VaryViewUtil;
+import com.pomelo.varyview.VaryViewHelper;
+import com.pomelo.varyview.VaryViewUtil;
 
 /**
  * Created by Administrator on 2017/8/23.

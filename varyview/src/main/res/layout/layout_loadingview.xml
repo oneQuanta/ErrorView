@@ -6,7 +6,7 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <com.plmelo.varyview.widget.ProgressWheel
+    <com.pomelo.varyview.widget.ProgressWheel
         xmlns:wheel="http://schemas.android.com/apk/res-auto"
         android:id="@+id/vv_loading_progress"
         android:layout_width="40dp"

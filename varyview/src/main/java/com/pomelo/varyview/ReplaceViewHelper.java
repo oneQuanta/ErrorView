@@ -1,4 +1,4 @@
-package com.plmelo.varyview;
+package com.pomelo.varyview;
 
 import android.content.Context;
 import android.view.LayoutInflater;

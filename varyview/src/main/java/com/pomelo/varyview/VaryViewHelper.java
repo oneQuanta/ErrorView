@@ -1,8 +1,9 @@
-package com.plmelo.varyview;
+package com.pomelo.varyview;
 
 import android.view.View;
 
-import com.plmelo.varyview.widget.ProgressWheel;
+import com.plmelo.varyview.R;
+import com.pomelo.varyview.widget.ProgressWheel;
 
 
 /**

@@ -3,7 +3,7 @@ package com.pomelo.errorview;
 import android.app.Application;
 import android.util.Log;
 
-import com.plmelo.varyview.VaryViewUtil;
+import com.pomelo.varyview.VaryViewUtil;
 
 
 /**

@@ -1,9 +1,11 @@
-package com.plmelo.varyview;
+package com.pomelo.varyview;
 
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+
+import com.plmelo.varyview.R;
 
 /**
  * Created by Administrator on 2017/5/12.
