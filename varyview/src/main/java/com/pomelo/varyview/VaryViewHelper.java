@@ -1,9 +1,14 @@
 package com.pomelo.varyview;
 
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import com.plmelo.varyview.R;
 import com.pomelo.varyview.widget.ProgressWheel;
+
+import java.io.IOException;
+import java.net.HttpCookie;
 
 
 /**
@@ -14,27 +19,29 @@ public class VaryViewHelper {
     /**
      * 切换不同视图的帮助类
      */
-    public OverlapViewHelper mViewHelper;
+    private OverlapViewHelper mViewHelper;
     /**
      * 错误页面
      */
-    public View mErrorView;
+    private View mErrorView;
     /**
      * 正在加载页面
      */
-    public View mLoadingView;
+    private View mLoadingView;
     /**
      * 数据为空的页面
      */
-    public View mEmptyView;
+    private View mEmptyView;
     /**
      * 正在加载页面的进度环
      */
-    public ProgressWheel mLoadingProgress;
+    private ProgressWheel mLoadingProgress;
 
+    private Context mContext;
 
     public VaryViewHelper(View view) {
         this(new OverlapViewHelper(view));
+        mContext = view.getContext();
     }
 
     public VaryViewHelper(OverlapViewHelper helper) {
@@ -47,13 +54,14 @@ public class VaryViewHelper {
         mEmptyView.setClickable(true);
     }
 
-    public void setUpErrorView(View view, View.OnClickListener listener) {
+    public void setUpErrorView(View view, int mRefreshButtonId, View.OnClickListener listener) {
         mErrorView = view;
         mErrorView.setClickable(true);
-
-        View btn = view.findViewById(R.id.vv_error_refresh);
-        if (btn != null) {
-            btn.setOnClickListener(listener);
+        if (mRefreshButtonId != -1) {
+            View btn = view.findViewById(mRefreshButtonId);
+            if (btn != null) {
+                btn.setOnClickListener(listener);
+            }
         }
     }
 
@@ -97,56 +105,83 @@ public class VaryViewHelper {
     }
 
     public void releaseVaryView() {
-        mErrorView = null;
-        mLoadingView = null;
-        mEmptyView = null;
+        mViewHelper = null;
     }
 
+
     public static class Builder {
+        public static Builder builder;
+
+        public static Builder getInstantiate() {
+            if (builder == null) {
+                builder = new Builder();
+            }
+            return builder;
+        }
+
+        private int loadingViewId = R.layout.layout_loadingview; //默认的loading界面
+        private int emptyViewId = R.layout.layout_emptyview;//默认的empty界面
+        private int errorViewId = R.layout.layout_errorview;//默认的error界面
+        private int mRefreshButtonId = R.id.vv_error_refresh;//默认的refresh按钮
         private View mErrorView;
+
         private View mLoadingView;
         private View mEmptyView;
-        private View mDataView;
-        private View.OnClickListener mRefreshListener;
 
-        public Builder setErrorView(View errorView) {
-            mErrorView = errorView;
+        public Builder setLoadingViewId(int loadingViewId) {
+            this.loadingViewId = loadingViewId;
             return this;
         }
 
-        public Builder setLoadingView(View loadingView) {
-            mLoadingView = loadingView;
+        public Builder setEmptyViewId(int emptyViewId) {
+            this.emptyViewId = emptyViewId;
             return this;
         }
 
-        public Builder setEmptyView(View emptyView) {
-            mEmptyView = emptyView;
+        public Builder setErrorViewId(int errorViewId,int mRefreshButtonId) {
+            this.errorViewId = errorViewId;
+            this.mRefreshButtonId = mRefreshButtonId;
             return this;
         }
 
-        public Builder setDataView(View dataView) {
-            mDataView = dataView;
-            return this;
-        }
+        public VaryViewHelper build(final VaryViewCallBack callBack) {
 
-        public Builder setRefreshListener(View.OnClickListener refreshListener) {
-            mRefreshListener = refreshListener;
-            return this;
-        }
+            VaryViewHelper helper = new VaryViewHelper(callBack.getVaryView());
 
-        public VaryViewHelper build() {
-            VaryViewHelper helper = new VaryViewHelper(mDataView);
-            if(mEmptyView!=null){
-                 helper.setUpEmptyView(mEmptyView);
+            if (mEmptyView == null) {
+                mEmptyView = LayoutInflater.from(helper.mContext).inflate(emptyViewId, null);
             }
-            if(mErrorView!=null){
-                 helper.setUpErrorView(mErrorView, mRefreshListener);
+
+            if (mErrorView == null) {
+                mErrorView = LayoutInflater.from(helper.mContext).inflate(errorViewId, null);
             }
-            if(mLoadingView!=null){
-                 helper.setUpLoadingView(mLoadingView);
+
+            if (mLoadingView == null) {
+                mLoadingView = LayoutInflater.from(helper.mContext).inflate(loadingViewId, null);
             }
+
+            helper.setUpLoadingView(mLoadingView);
+            helper.setUpEmptyView(mEmptyView);
+            helper.setUpErrorView(mErrorView, mRefreshButtonId, new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    callBack.reGetData();
+                }
+            });
             return helper;
         }
+    }
+
+    public interface VaryViewCallBack {
+        /**
+         * 返回要替换得View
+         */
+        View getVaryView();
+
+        /**
+         * 重新刷新得方法
+         */
+        void reGetData();
     }
 
 }

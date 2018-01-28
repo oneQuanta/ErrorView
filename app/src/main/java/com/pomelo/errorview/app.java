@@ -3,7 +3,7 @@ package com.pomelo.errorview;
 import android.app.Application;
 import android.util.Log;
 
-import com.pomelo.varyview.VaryViewUtil;
+import com.pomelo.varyview.VaryViewHelper;
 
 
 /**
@@ -17,17 +17,17 @@ public class app extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.d(TAG, "onCreate: 执行了");
+        Log.e(TAG, "onCreate: 执行了");
 
-//        /**
-//         * 可以自定义 空界面 ， 错误界面 ，加载界面
-//         */
-        VaryViewUtil
-                .ViewBuilder
-                .Builder()
+        /**
+         * 可以自定义 空界面,错误界面,加载界面
+         */
+        VaryViewHelper
+                .Builder
+                .getInstantiate()
                 .setEmptyViewId(R.layout.layout_emptyview)
-                .setErrorViewId(R.layout.layout_errorview)
-                .setLoadingViewId(R.layout.layout_loadingview);
+                .setLoadingViewId(R.layout.layout_loadingview)
+                .setErrorViewId(R.layout.layout_errorview, R.id.vv_error_refresh);
 
     }
 }

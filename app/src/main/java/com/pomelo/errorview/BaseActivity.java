@@ -5,13 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.pomelo.varyview.VaryViewHelper;
-import com.pomelo.varyview.VaryViewUtil;
 
 /**
  * Created by Administrator on 2017/8/23.
  */
 
-public abstract class BaseActivity extends AppCompatActivity implements VaryViewUtil.VaryView{
+public abstract class BaseActivity extends AppCompatActivity implements VaryViewHelper.VaryViewCallBack{
     //varyViewHelper对象
     protected VaryViewHelper varyViewHelper;
 
@@ -20,7 +19,7 @@ public abstract class BaseActivity extends AppCompatActivity implements VaryView
         super.onCreate(savedInstanceState);
         initView();
         //创建varyViewHelper对象
-        varyViewHelper = VaryViewUtil.newInstance(this, this);
+        varyViewHelper = VaryViewHelper.Builder.getInstantiate().build(this);
         initData();
     }
 
